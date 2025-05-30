@@ -175,6 +175,7 @@ const navbarLinksEl = document.getElementById('navbar-links');
 
 function updateHeaderPartialBlur() {
     if (!headerEl || !navbarLinksEl) return;
+    const darkmodeBtn = document.getElementById('darkmode-toggle');
     // Always check for menu open on all screen sizes
     const isMenuOpen = window.getComputedStyle(navbarLinksEl).display !== 'none' && navbarLinksEl.classList.contains('show');
     if (isMenuOpen) {
@@ -183,9 +184,11 @@ function updateHeaderPartialBlur() {
         // Set CSS variable for blur height
         headerEl.style.setProperty('--navbar-blur-height', menuRect.height + 'px');
         headerEl.classList.add('header-blur-partial');
+        if (darkmodeBtn) darkmodeBtn.classList.add('blurred-toggle');
     } else {
         headerEl.classList.remove('header-blur-partial');
         headerEl.style.removeProperty('--navbar-blur-height');
+        if (darkmodeBtn) darkmodeBtn.classList.remove('blurred-toggle');
     }
 }
 
