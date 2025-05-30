@@ -538,38 +538,49 @@
         /* Responsive navbar styles */
         @media (max-width: 900px) {
             .navbar-container {
-                flex-direction: column;
-                align-items: flex-start;
-                height: auto;
+                flex-direction: row; /* Keep row direction */
+                align-items: center; /* Keep items centered vertically */
+                height: 58px;
                 padding: 0 10px;
             }
             .navbar-logo {
-                margin-bottom: 8px;
+                margin-bottom: 0; /* Remove margin to keep position */
                 font-size: 1.1em;
             }
             .navbar-links {
                 gap: 16px;
-                flex-direction: row;
-                width: 100%;
+                flex-direction: column;
+                width: 100vw;
                 justify-content: flex-start;
-                margin-bottom: 6px;
+                margin-bottom: 0;
+                position: absolute;
+                left: 0;
+                top: 58px;
+                background: rgba(35,35,35,0.95);
+                border-radius: 0 0 18px 18px;
+                box-shadow: 0 2px 12px #bfa10022;
+                padding: 12px 0;
+            }
+            .navbar-links.show {
+                display: flex;
             }
         }
         @media (max-width: 600px) {
             .navbar-container {
-                flex-direction: column;
-                align-items: stretch;
+                flex-direction: row;
+                align-items: center;
                 padding: 0 4px;
-                height: auto;
+                height: 48px;
             }
             .navbar-logo {
                 font-size: 1em;
-                margin-bottom: 6px;
+                margin-bottom: 0;
             }
             .navbar-links {
+                top: 48px;
                 flex-direction: column;
                 gap: 8px;
-                width: 100%;
+                width: 100vw;
                 align-items: flex-start;
                 margin-bottom: 0;
             }
