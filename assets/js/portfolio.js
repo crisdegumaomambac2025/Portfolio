@@ -299,3 +299,19 @@ window.addEventListener('DOMContentLoaded', updateHeaderPartialBlur);
     initParticles();
     animate();
 })();
+
+// === Fade-in on scroll for .container ===
+function fadeInOnScroll() {
+    const containers = document.querySelectorAll('.container');
+    containers.forEach(container => {
+        const rect = container.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.top < windowHeight - 60) {
+            container.classList.add('fade-in');
+        } else {
+            container.classList.remove('fade-in');
+        }
+    });
+}
+window.addEventListener('scroll', fadeInOnScroll);
+window.addEventListener('DOMContentLoaded', fadeInOnScroll);
