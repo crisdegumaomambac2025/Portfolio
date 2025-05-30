@@ -146,6 +146,12 @@
                 <span class="footer-logo"><i class="fas fa-gem"></i> CRIS D. OMAMBAC</span>
                 <span class="footer-role">IT Student & Web Developer</span>
             </div>
+            <!-- Users icon centered in the footer -->
+            <div class="footer-like" style="display:flex;flex-direction:row;align-items:center;justify-content:center;margin:18px 0;gap:10px;">
+                <i class="fas fa-users" style="color:var(--gold);font-size:1.7em;"></i>
+                <span style="display:inline-block;color:var(--text-main);font-size:1em;font-weight:700;letter-spacing:1.2px;font-family:'Segoe UI',Arial,sans-serif;text-shadow:0 2px 8px #bfa10022;vertical-align:middle;">Visits this site</span>
+                <span id="visitor-count" style="display:inline-block;font-size:1.18em;font-family:'Orbitron', 'Consolas', monospace; color:var(--gold); background:linear-gradient(90deg,var(--gold),var(--gold-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 6px #bfa10055);padding:2px 10px 2px 6px;letter-spacing:1.5px;vertical-align:middle;">-</span>
+            </div>
             <div class="footer-social">
                 <a href="https://www.facebook.com/crisdegumaomambac/" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/crisdegumaomambac/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -156,5 +162,15 @@
         </div>
     </footer>
     <script src="assets/js/portfolio.js"></script>
+    <script>
+// Visitor counter AJAX
+fetch('track_visitor.php')
+  .then(res => res.json())
+  .then(data => {
+    if (data.count !== undefined) {
+      document.getElementById('visitor-count').textContent = data.count;
+    }
+  });
+</script>
 </body>
 </html>
