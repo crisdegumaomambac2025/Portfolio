@@ -779,43 +779,26 @@ html {
 .verified-icon {
     display: inline-flex;
     align-items: center;
-    margin-left: 6px;
-    font-size: 0.65em;
+    margin-left: 0.5px; /* Even closer to the name */
+    font-size: 0.85em; /* Slightly smaller than the name */
     color: var(--gold);
     filter: drop-shadow(0 1px 2px #bfa10055);
     text-shadow: 0 2px 8px #bfa10044;
     vertical-align: middle;
-    /* Prevent line break between name and icon */
     white-space: nowrap;
 }
 .verified-icon i {
     color: var(--gold);
-    font-size: 0.9em;
+    font-size: 0.85em; /* Slightly smaller than the name */
     vertical-align: middle;
 }
 @media (max-width: 600px) {
-    header h1 {
-        font-size: 2em;
-        gap: 6px;
-    }
     .verified-icon {
-        font-size: 0.55em;
-        margin-left: 4px;
-    }
-    .verified-icon i {
-        font-size: 0.8em;
+        margin-left: 0px;
     }
 }
 @media (max-width: 400px) {
-    header h1 {
-        font-size: 1.2em;
-        gap: 4px;
-    }
     .verified-icon {
-        font-size: 0.45em;
-        margin-left: 2px;
-    }
-    .verified-icon i {
-        font-size: 0.7em;
+        margin-left: 0px;
     }
 }
