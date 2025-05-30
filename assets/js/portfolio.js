@@ -35,8 +35,17 @@ for (let i = 0; i < CELL_COUNT; i++) {
     });
 }
 let mouse = { x: null, y: null };
-const REPEL_RADIUS = 38;
-const REPEL_FORCE = 3.5;
+canvas.addEventListener('mousemove', function(e) {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+});
+canvas.addEventListener('mouseleave', function() {
+    mouse.x = null;
+    mouse.y = null;
+});
+const REPEL_RADIUS = 60;
+const REPEL_FORCE = 1.8;
 document.addEventListener('mousemove', function(e) {
     const rect = canvas.getBoundingClientRect();
     if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
@@ -171,3 +180,96 @@ document.querySelectorAll('.navbar-links a').forEach(function(link) {
         if (navbarLinks) navbarLinks.classList.remove('show');
     });
 });
+
+// === Moving Particles Background ===
+(function() {
+    const canvas = document.getElementById('bg-cells');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let particles = [];
+    const PARTICLE_COUNT = Math.floor((width * height) / 3500);
+    const COLORS = ['#bfa100', '#fffbe6', '#ffe066', '#fff9c4'];
+
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+    }
+
+    function randomBetween(a, b) {
+        return a + Math.random() * (b - a);
+    }
+
+    function createParticle() {
+        return {
+            x: randomBetween(0, width),
+            y: randomBetween(0, height),
+            r: randomBetween(1.2, 2.8),
+            dx: randomBetween(-0.3, 0.3),
+            dy: randomBetween(-0.3, 0.3),
+            color: COLORS[Math.floor(Math.random() * COLORS.length)]
+        };
+    }
+
+    function initParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(createParticle());
+        }
+    }
+
+    function drawParticles() {
+        ctx.clearRect(0, 0, width, height);
+        for (let p of particles) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = 0.7;
+            ctx.shadowColor = p.color;
+            ctx.shadowBlur = 8;
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
+        }
+    }
+
+    function updateParticles() {
+        for (let p of particles) {
+            // Repel from mouse
+            if (mouse.x !== null && mouse.y !== null) {
+                const dx = p.x - mouse.x;
+                const dy = p.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < REPEL_RADIUS) {
+                    // Move particle away from mouse
+                    const angle = Math.atan2(dy, dx);
+                    const repelStrength = (REPEL_RADIUS - dist) / REPEL_RADIUS * REPEL_FORCE;
+                    p.x += Math.cos(angle) * repelStrength * 2;
+                    p.y += Math.sin(angle) * repelStrength * 2;
+                }
+            }
+            p.x += p.dx;
+            p.y += p.dy;
+            if (p.x < 0 || p.x > width) p.dx *= -1;
+            if (p.y < 0 || p.y > height) p.dy *= -1;
+        }
+    }
+
+    function animate() {
+        drawParticles();
+        updateParticles();
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        initParticles();
+    });
+
+    resizeCanvas();
+    initParticles();
+    animate();
+})();
