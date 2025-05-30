@@ -10,21 +10,22 @@
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <div class="navbar-logo">PORTFOLIO</div>
+            <div class="navbar-logo"><i class="fas fa-gem" style="color:var(--gold);margin-right:8px;"></i>PORTFOLIO</div>
             <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars" id="navbar-bars-icon"></i>
             </button>
             <ul class="navbar-links" id="navbar-links" class="effect">
-                <li><a href="#" class="navbar-link">Home</a></li>
-                <li><a href="#about-me" class="navbar-link">About Me</a></li>
-                <li><a href="#contact" class="navbar-link">Contact</a></li>
+                <li><a href="#" class="navbar-link"><i class="fas fa-home" style="color:var(--gold);margin-right:6px;"></i>Home</a></li>
+                <li><a href="#about-me" class="navbar-link"><i class="fas fa-user-circle" style="color:var(--gold);margin-right:6px;"></i>About Me</a></li>
+                <li><a href="#education" class="navbar-link"><i class="fas fa-graduation-cap" style="color:var(--gold);margin-right:6px;"></i>Education</a></li>
+                <li><a href="#contact" class="navbar-link"><i class="fas fa-paper-plane" style="color:var(--gold);margin-right:6px;"></i>Contact</a></li>
             </ul>
         </div>
     </nav>
     <canvas id="bg-cells"></canvas>
     <header>
         <img src="profile/me.jpg" alt="Profile Picture" class="profile-pic">
-        <h1>CRIS D. OMAMBAC</h1>
+        <h1>CRIS D. OMAMBAC <span class="verified-icon" title="Verified"><i class="fas fa-circle-check" style="color:var(--gold);margin-left:8px;"></i></span></h1>
         <h2>IT Student</h2>
         <p style="text-align:justify;">
             Welcome to my portfolio! I am passionate about building beautiful, functional web applications and bringing creative ideas to life. Explore my skills and projects below.
@@ -37,7 +38,7 @@
     <div class="about-personal-flex" id="about-me">
         <div class="container about-container" style="margin:0;">
             <section>
-                <h3>About Me</h3>
+                <h3><i class="fas fa-user-circle" style="color:var(--gold);margin-right:8px;"></i>About Me</h3>
                 <p style="font-size:1.15em;color:var(--text-muted);max-width:700px;margin:auto;line-height:1.7;text-align:justify;">
                     Hello! I'm Cris D. Omambac, a passionate Web Developer and creative problem solver. I enjoy building beautiful, functional web applications and bringing ideas to life through code and design. With experience in both front-end and back-end development, as well as UI/UX design and graphic arts, I strive to deliver engaging digital experiences. I am always eager to learn new technologies and collaborate on exciting projects.
                 </p>
@@ -45,7 +46,7 @@
         </div>
         <div class="container personal-container" style="margin:0;">
             <section>
-                <h3>Personal Information</h3>
+                <h3><i class="fas fa-id-card" style="color:var(--gold);margin-right:8px;"></i>Personal Information</h3>
                 <div style="font-size:1.08em;color:var(--text-muted);max-width:700px;margin:auto;line-height:1.7;text-align:justify;">
                     <ul style="list-style:none;padding:0;margin:0;">
                         <li><strong>Address:</strong> Inoburan, City of Naga, Cebu</li>
@@ -59,7 +60,7 @@
     </div>
     <div class="container">
         <section>
-            <h3>Skills</h3>
+            <h3><i class="fas fa-lightbulb" style="color:var(--gold);margin-right:8px;"></i>Skills</h3>
             <div class="skills" style="width:100%;">
                 <div class="skill" style="flex:1;min-width:180px;box-sizing:border-box;">
                     <span class="skill-icon"><i class="fas fa-laptop-code"></i></span>
@@ -85,7 +86,7 @@
             </div>
         </section>
         <section>
-            <h3>Work Experience</h3>
+            <h3><i class="fas fa-briefcase" style="color:var(--gold);margin-right:8px;"></i>Work Experience</h3>
             <div class="workexp-card">
                 <div class="workexp-title">Data Labeler</div>
                 <div class="workexp-company">Remotasks &mdash; 2020&nbsp;&ndash;&nbsp;Present</div>
@@ -103,7 +104,7 @@
             </div>
         </section>
         <section>
-            <h3>Projects</h3>
+            <h3><i class="fas fa-tasks" style="color:var(--gold);margin-right:8px;"></i>Projects</h3>
             <div class="projects">
                 <div class="project">
                     <div class="project-title">Student Clearance System</div>
@@ -119,8 +120,46 @@
                 </div>
             </div>
         </section>
+    </div>
+    <!-- Education Section (Two Columns) -->
+    <div class="container education-container" id="education" style="margin-bottom:32px;">
+        <section>
+            <h3><i class="fas fa-graduation-cap" style="color:var(--gold);margin-right:8px;"></i>Education</h3>
+            <div style="display:flex;gap:32px;flex-wrap:wrap;">
+                <!-- First Column -->
+                <div style="flex:1;min-width:220px;">
+                    <div style="margin-bottom:18px;">
+                        <strong style="text-decoration:underline;text-decoration-color:#bfa100;"><span class="edu-num">1</span>Primary</strong><br>
+                        Langtand Elementary School<br>
+                        <span style="color:var(--text-muted);font-size:0.98em;">2013-2014</span>
+                    </div>
+                    <div>
+                        <strong style="text-decoration:underline;text-decoration-color:#bfa100;"><span class="edu-num">2</span>Secondary</strong><br>
+                        City of Naga Enhanced Special Science and Technology High School<br>
+                        <span style="color:var(--text-muted);font-size:0.98em;">2017-2018</span>
+                    </div>
+                </div>
+                <!-- Second Column -->
+                <div style="flex:1;min-width:220px;">
+                    <div style="margin-bottom:18px;">
+                        <strong style="text-decoration:underline;text-decoration-color:#bfa100;"><span class="edu-num">3</span>Tertiary</strong><br>
+                        Naga Senior High School<br>
+                        <span style="color:var(--text-muted);font-size:0.98em;">2019-2021</span>
+                    </div>
+                    <div>
+                        <strong style="text-decoration:underline;text-decoration-color:#bfa100;"><span class="edu-num">4</span>University</strong><br>
+                        Cebu Technological University - Naga Extension Campus<br>
+                        Bachelor of Science in Information Technology<br>
+                        <span style="color:var(--text-muted);font-size:0.98em;">2023-Present</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Contact section moved to its own container -->
+    <div class="container contact-container">
         <section class="contact" id="contact">
-            <h3>Contact</h3>
+            <h3><i class="fas fa-paper-plane" style="color:var(--gold);margin-right:8px;"></i>Contact</h3>
             <p>Let's work together! Email me at <i class="fas fa-envelope" style="color:var(--gold);margin-right:6px;"></i><a href="mailto:cris.omambac@gws.ctu.edu.ph" target="_blank" rel="noopener">cris.omambac@gws.ctu.edu.ph</a></p>
             <div style="margin-top:18px; font-size:1.6em; display:flex; justify-content:center; gap:22px;">
                 <a href="https://www.facebook.com/crisdegumaomambac/" target="_blank" rel="noopener" title="Facebook" style="color:var(--gold);"><i class="fab fa-facebook"></i></a>
