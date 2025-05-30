@@ -51,6 +51,11 @@ header h1 {
     letter-spacing: 2px;
     color: var(--gold);
     text-shadow: 0 2px 12px #bfa10044;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    /* Ensure wrapping on small screens */
+    flex-wrap: nowrap;
 }
 header h2 {
     font-weight: 400;
@@ -70,6 +75,14 @@ header p {
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.25);
     padding: 40px 30px;
+    /* Fade-in animation for .container */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.container.fade-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 section {
     margin-bottom: 40px;
@@ -739,4 +752,70 @@ html {
     filter: blur(6px) brightness(0.95);
     transition: filter 0.2s;
     pointer-events: none;
+}
+/* Numbered circle icons for education section */
+.edu-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #181818;
+    font-weight: 700;
+    font-size: 1.08em;
+    margin-right: 6px;
+    box-shadow: 0 2px 6px #bfa10033;
+    border: 2px solid var(--gold-dark);
+    text-align: center;
+    vertical-align: middle;
+}
+.edu-num.dark {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #fff;
+    border: 2px solid var(--gold);
+}
+.verified-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 6px;
+    font-size: 0.65em;
+    color: var(--gold);
+    filter: drop-shadow(0 1px 2px #bfa10055);
+    text-shadow: 0 2px 8px #bfa10044;
+    vertical-align: middle;
+    /* Prevent line break between name and icon */
+    white-space: nowrap;
+}
+.verified-icon i {
+    color: var(--gold);
+    font-size: 0.9em;
+    vertical-align: middle;
+}
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+        gap: 6px;
+    }
+    .verified-icon {
+        font-size: 0.55em;
+        margin-left: 4px;
+    }
+    .verified-icon i {
+        font-size: 0.8em;
+    }
+}
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 1.2em;
+        gap: 4px;
+    }
+    .verified-icon {
+        font-size: 0.45em;
+        margin-left: 2px;
+    }
+    .verified-icon i {
+        font-size: 0.7em;
+    }
 }
