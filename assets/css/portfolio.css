@@ -712,10 +712,25 @@ html {
     z-index: 2;
     pointer-events: none;
     border-radius: 0 0 18px 18px;
-    transition: height 0.2s;
+    transition: height 0.2s, background 0.2s;
+}
+@media (max-width: 1200px) {
+    .header-blur-partial::after {
+        background: rgba(24,24,24,0.38);
+    }
 }
 @media (max-width: 900px) {
     .header-blur-partial::after {
         background: rgba(24,24,24,0.5);
+    }
+}
+@media (max-width: 600px) {
+    .header-blur-partial::after {
+        background: rgba(24,24,24,0.62);
+    }
+}
+@media (max-width: 400px) {
+    .header-blur-partial::after {
+        background: rgba(24,24,24,0.7);
     }
 }
