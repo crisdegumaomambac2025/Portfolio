@@ -175,10 +175,9 @@ const navbarLinksEl = document.getElementById('navbar-links');
 
 function updateHeaderPartialBlur() {
     if (!headerEl || !navbarLinksEl) return;
-    const isMobile = window.innerWidth <= 900;
-    // Check if menu is open (displayed)
-    const isMenuOpen = window.getComputedStyle(navbarLinksEl).display !== 'none';
-    if (isMobile && isMenuOpen) {
+    // Always check for menu open on all screen sizes
+    const isMenuOpen = window.getComputedStyle(navbarLinksEl).display !== 'none' && navbarLinksEl.classList.contains('show');
+    if (isMenuOpen) {
         // Get the height of the navbar menu
         const menuRect = navbarLinksEl.getBoundingClientRect();
         // Set CSS variable for blur height
@@ -203,6 +202,7 @@ document.querySelectorAll('.navbar-links a').forEach(function(link) {
     });
 });
 window.addEventListener('resize', updateHeaderPartialBlur);
+window.addEventListener('DOMContentLoaded', updateHeaderPartialBlur);
 
 // === Moving Particles Background ===
 (function() {
