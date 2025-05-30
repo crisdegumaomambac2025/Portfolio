@@ -695,3 +695,27 @@ html {
 .darkmode .footer-copy {
     color: #555;
 }
+/* Header partial blur effect for mobile menu (only top part, not whole header) */
+.header-blur-partial {
+    position: relative;
+    overflow: visible;
+}
+.header-blur-partial::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    /* Height matches the mobile menu height */
+    height: var(--navbar-blur-height, 120px);
+    background: rgba(24,24,24,0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 0 0 18px 18px;
+    transition: height 0.2s;
+}
+@media (max-width: 900px) {
+    .header-blur-partial::after {
+        background: rgba(24,24,24,0.5);
+    }
+}
