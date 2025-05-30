@@ -779,8 +779,8 @@ html {
 .verified-icon {
     display: inline-flex;
     align-items: center;
-    margin-left: 0.5px; /* Even closer to the name */
-    font-size: 0.85em; /* Slightly smaller than the name */
+    margin-left: 8px; /* Standard space from the name */
+    font-size: 1em; /* Match the name size */
     color: var(--gold);
     filter: drop-shadow(0 1px 2px #bfa10055);
     text-shadow: 0 2px 8px #bfa10044;
@@ -789,16 +789,6 @@ html {
 }
 .verified-icon i {
     color: var(--gold);
-    font-size: 0.85em; /* Slightly smaller than the name */
+    font-size: 1em; /* Match the name size */
     vertical-align: middle;
-}
-@media (max-width: 600px) {
-    .verified-icon {
-        margin-left: 0px;
-    }
-}
-@media (max-width: 400px) {
-    .verified-icon {
-        margin-left: 0px;
-    }
 }
