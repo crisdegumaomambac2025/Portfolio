@@ -479,6 +479,58 @@
         #scrollToTopBtn:hover {
             transform: scale(1.1);
         }
+        /* Responsive navbar styles */
+        @media (max-width: 900px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                padding: 0 10px;
+            }
+            .navbar-logo {
+                margin-bottom: 8px;
+                font-size: 1.1em;
+            }
+            .navbar-links {
+                gap: 16px;
+                flex-direction: row;
+                width: 100%;
+                justify-content: flex-start;
+                margin-bottom: 6px;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar-container {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0 4px;
+                height: auto;
+            }
+            .navbar-logo {
+                font-size: 1em;
+                margin-bottom: 6px;
+            }
+            .navbar-links {
+                flex-direction: column;
+                gap: 8px;
+                width: 100%;
+                align-items: flex-start;
+                margin-bottom: 0;
+            }
+            .navbar-links li {
+                width: 100%;
+            }
+            .navbar-links a {
+                padding: 8px 0;
+                width: 100%;
+                display: block;
+            }
+        }
+        @media (max-width: 400px) {
+            .navbar-logo {
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 <body>
