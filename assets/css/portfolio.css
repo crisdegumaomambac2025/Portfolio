@@ -779,16 +779,22 @@ html {
 .verified-icon {
     display: inline-flex;
     align-items: center;
-    margin-left: 8px; /* Standard space from the name */
-    font-size: 1em; /* Match the name size */
+    margin-left: 8px;
+    font-size: 1em;
     color: var(--gold);
     filter: drop-shadow(0 1px 2px #bfa10055);
     text-shadow: 0 2px 8px #bfa10044;
     vertical-align: middle;
     white-space: nowrap;
+    transition: margin-left 0.2s;
 }
-.verified-icon i {
-    color: var(--gold);
-    font-size: 1em; /* Match the name size */
-    vertical-align: middle;
+@media (max-width: 600px) {
+    .verified-icon {
+        margin-left: 2px;
+    }
+}
+@media (max-width: 400px) {
+    .verified-icon {
+        margin-left: 1px;
+    }
 }
