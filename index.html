@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Creative Portfolio</title>
+    <title>PORTFOLIO - CRIS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
@@ -340,64 +340,218 @@
         .darkmode .workexp-card:hover, .darkmode .project:hover {
             box-shadow: 0 6px 24px #FFD70033;
         }
+        /* Two-column layout for About Me and Personal Information */
+        .about-personal-flex {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            align-items: stretch;
+            max-width: 1000px;
+            margin: 40px auto 0 auto;
+            background: none;
+            box-shadow: none;
+            padding: 0;
+        }
+        .about-container, .personal-container {
+            flex: 1 1 0;
+            min-width: 0;
+            background: var(--bg-card);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+            padding: 40px 30px;
+        }
+        @media (max-width: 900px) {
+            .about-personal-flex {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .about-container, .personal-container {
+                padding: 24px 8px;
+            }
+        }
+        @media (max-width: 600px) {
+            .about-container, .personal-container {
+                padding: 12px 2vw;
+            }
+        }
+        /* Navbar styles */
+        .navbar {
+            width: 100%;
+            /* Remove background color, add blur and transparency */
+            background: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 2px 12px #bfa10022;
+            position: sticky;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            padding: 0;
+        }
+        .navbar-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            height: 58px;
+            background: rgba(35,35,35,0.18); /* subtle panel for content, still transparent */
+            border-radius: 0 0 18px 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .navbar-logo {
+            font-size: 1.35em;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px #bfa10033;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-links a {
+            position: relative;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            transition: color 0.2s;
+            display: inline-block;
+            text-align: center;
+        }
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100%;
+            height: 2.5px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+            pointer-events: none;
+        }
+        .navbar-links a:hover::after,
+        .navbar-links a:focus::after {
+            transform: scaleX(1);
+            transform-origin: center;
+        }
+        .navbar-links a:hover,
+        .navbar-links a:focus {
+            color: var(--gold);
+        }
+        .darkmode .navbar-links a {
+            color: var(--text-main);
+        }
+        .darkmode .navbar-links a:hover,
+        .darkmode .navbar-links a:focus {
+            color: var(--gold-dark);
+        }
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 999;
+            background: linear-gradient(135deg,var(--gold),var(--gold-dark));
+            color: #181818;
+            border: none;
+            border-radius: 50%;
+            width: 54px;
+            height: 54px;
+            box-shadow: 0 4px 18px #bfa10055, 0 2px 8px #bfa10022;
+            font-size: 2em;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.18s;
+            outline: none;
+            align-items: center;
+            justify-content: center;
+        }
+        #scrollToTopBtn:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">PORTFOLIO</div>
+            <ul class="navbar-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
     <canvas id="bg-cells"></canvas>
     <header>
         <img src="me.jpg" alt="Profile Picture" class="profile-pic">
         <h1>CRIS D. OMAMBAC</h1>
-        <h2>Web Developer</h2>
-        <p>
+        <h2>IT Student</h2>
+        <p style="text-align:justify;">
             Welcome to my portfolio! I am passionate about building beautiful, functional web applications and bringing creative ideas to life. Explore my skills and projects below.
         </p>
         <button id="darkmode-toggle" style="position:absolute;top:18px;right:24px;background:var(--bg-card);color:var(--gold);border:2px solid var(--gold);border-radius:22px;padding:7px 18px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px #bfa10022;transition:background 0.2s;z-index:10;">
             <i class="fas fa-moon"></i> <span id="darkmode-label">Light Mode</span>
         </button>
     </header>
+    <!-- Two-column layout for About Me and Personal Information -->
+    <div class="about-personal-flex" id="about-me">
+        <div class="container about-container" style="margin:0;">
+            <section>
+                <h3>About Me</h3>
+                <p style="font-size:1.15em;color:var(--text-muted);max-width:700px;margin:auto;line-height:1.7;text-align:justify;">
+                    Hello! I'm Cris D. Omambac, a passionate Web Developer and creative problem solver. I enjoy building beautiful, functional web applications and bringing ideas to life through code and design. With experience in both front-end and back-end development, as well as UI/UX design and graphic arts, I strive to deliver engaging digital experiences. I am always eager to learn new technologies and collaborate on exciting projects.
+                </p>
+            </section>
+        </div>
+        <div class="container personal-container" style="margin:0;">
+            <section>
+                <h3>Personal Information</h3>
+                <div style="font-size:1.08em;color:var(--text-muted);max-width:700px;margin:auto;line-height:1.7;text-align:justify;">
+                    <ul style="list-style:none;padding:0;margin:0;">
+                        <li><strong>Address:</strong> Inoburan, City of Naga, Cebu</li>
+                        <li><strong>Birthdate:</strong> Jan 01, 1999</li>
+                        <li><strong>Contact Number:</strong> 09556785443</li>
+                        <li><strong>Postal Code:</strong> 6037</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
     <div class="container">
         <section>
             <h3>Skills</h3>
-            <div class="skills">
-                <div class="skill">
-                    <span class="skill-icon"><i class="fab fa-html5"></i></span>
-                    HTML5
-                    <div class="skill-percent">90%</div>
+            <div class="skills" style="width:100%;">
+                <div class="skill" style="flex:1;min-width:180px;box-sizing:border-box;">
+                    <span class="skill-icon"><i class="fas fa-laptop-code"></i></span>
+                    <strong>Front End</strong>
+                    <div style="margin-top:6px; font-weight:500; color:#232323; width:100%; text-align:center;">
+                        HTML, CSS, JavaScript
+                    </div>
                 </div>
-                <div class="skill">
-                    <span class="skill-icon"><i class="fab fa-css3-alt"></i></span>
-                    CSS3
-                    <div class="skill-percent">88%</div>
+                <div class="skill" style="flex:1;min-width:180px;box-sizing:border-box;">
+                    <span class="skill-icon"><i class="fas fa-server"></i></span>
+                    <strong>Back End</strong>
+                    <div style="margin-top:6px; font-weight:500; color:#232323; width:100%; text-align:center;">
+                        PHP, C#, Java, VB.NET
+                    </div>
                 </div>
-                <div class="skill">
-                    <span class="skill-icon"><i class="fab fa-js-square"></i></span>
-                    JavaScript
-                    <div class="skill-percent">80%</div>
-                </div>
-                <div class="skill">
-                    <span class="skill-icon"><i class="fab fa-php"></i></span>
-                    PHP
-                    <div class="skill-percent">80%</div>
-                </div>
-                <div class="skill">
+                <div class="skill" style="flex:1;min-width:180px;box-sizing:border-box;">
                     <span class="skill-icon"><i class="fas fa-database"></i></span>
-                    MySQL
-                    <div class="skill-percent">78%</div>
-                </div>
-                <div class="skill">
-                    <span class="skill-icon"><i class="fas fa-pencil-ruler"></i></span>
-                    UI/UX Design
-                    <div class="skill-percent">82%</div>
-                </div>
-                <div class="skill">
-                    <span class="skill-icon"><i class="fas fa-code"></i></span>
-                    C#
-                    <div class="skill-percent">81%</div>
-                </div>
-                <div class="skill">
-                    <span class="skill-icon"><i class="fas fa-network-wired"></i></span>
-                    .NET
-                    <div class="skill-percent">78%</div>
+                    <strong>Database</strong>
+                    <div style="margin-top:6px; font-weight:500; color:#232323; width:100%; text-align:center;">
+                        MySQL
+                    </div>
                 </div>
             </div>
         </section>
@@ -436,7 +590,7 @@
                 </div>
             </div>
         </section>
-        <section class="contact">
+        <section class="contact" id="contact">
             <h3>Contact</h3>
             <p>Let's work together! Email me at <i class="fas fa-envelope" style="color:var(--gold);margin-right:6px;"></i><a href="https://mail.google.com/mail/u/0/#inbox/FMfcgzQbfTzBkMTXJHNFbFpbKQgNpQkC?compose=new" target="_blank" rel="noopener">cris.omambac@gws.ctu.edu.ph</a></p>
             <div style="margin-top:18px; font-size:1.6em; display:flex; justify-content:center; gap:22px;">
@@ -454,6 +608,9 @@
             <button id="close-modal-btn" style="background:linear-gradient(90deg,var(--gold),var(--gold-dark));color:#181818;font-weight:700;padding:8px 22px;border:none;border-radius:20px;cursor:pointer;box-shadow:0 2px 6px #bfa10033;font-size:1em;">OK</button>
         </div>
     </div>
+    <button id="scrollToTopBtn" title="Go to top" style="display:none;position:fixed;bottom:32px;right:32px;z-index:999;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#181818;border:none;border-radius:50%;width:54px;height:54px;box-shadow:0 4px 18px #bfa10055,0 2px 8px #bfa10022;font-size:2em;cursor:pointer;transition:background 0.2s,transform 0.18s;outline:none;align-items:center;justify-content:center;">
+        <i class="fas fa-chevron-up"></i>
+    </button>
     <script>
     // Moving background cells animation
     const canvas = document.getElementById('bg-cells');
@@ -608,6 +765,31 @@
     darkmodeBtn.onclick = function() {
         setDarkMode(!document.body.classList.contains('darkmode'));
     };
+
+    // Floating scroll-to-top button logic
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 200) {
+            scrollToTopBtn.style.display = 'flex';
+        } else {
+            scrollToTopBtn.style.display = 'none';
+        }
+    });
+    scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Smooth scroll for navbar links
+    document.querySelectorAll('.navbar-links a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href').slice(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
     </script>
 </body>
 </html>
