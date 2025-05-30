@@ -456,6 +456,86 @@
         .darkmode .navbar-links a:focus {
             color: var(--gold-dark);
         }
+        /* Responsive Navbar */
+        @media (max-width: 700px) {
+            .navbar-container {
+                flex-direction: row;
+                padding: 0 10px;
+                height: 48px;
+            }
+            .navbar-logo {
+                font-size: 1em;
+            }
+            .navbar-links {
+                position: fixed;
+                top: 0;
+                right: -100vw;
+                height: 100vh;
+                width: 70vw;
+                max-width: 320px;
+                background: rgba(35,35,35,0.98);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                gap: 0;
+                padding: 70px 0 0 0;
+                margin: 0;
+                box-shadow: 0 2px 12px #bfa10022;
+                border-radius: 0 0 0 18px;
+                transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+                z-index: 100;
+            }
+            .navbar-links.open {
+                right: 0;
+            }
+            .navbar-links li {
+                width: 100%;
+                border-bottom: 1px solid #333;
+            }
+            .navbar-links a {
+                display: block;
+                width: 100%;
+                padding: 18px 24px;
+                font-size: 1.1em;
+            }
+            .navbar-hamburger {
+                display: flex !important;
+            }
+        }
+        @media (max-width: 400px) {
+            .navbar-links {
+                width: 95vw;
+                max-width: none;
+            }
+        }
+        .navbar-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 38px;
+            height: 38px;
+            cursor: pointer;
+            z-index: 101;
+        }
+        .navbar-hamburger span {
+            display: block;
+            width: 26px;
+            height: 4px;
+            margin: 4px 0;
+            background: var(--gold);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .navbar-hamburger.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .navbar-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .navbar-hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
         #scrollToTopBtn {
             display: none;
             position: fixed;
@@ -485,7 +565,12 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-logo">PORTFOLIO</div>
-            <ul class="navbar-links">
+            <div class="navbar-hamburger" id="navbar-hamburger" aria-label="Open navigation" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-links" id="navbar-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="#about-me">About Me</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -789,6 +874,31 @@
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
+    });
+
+    // Navbar hamburger menu toggle
+    const navbarHamburger = document.getElementById('navbar-hamburger');
+    const navbarLinks = document.getElementById('navbar-links');
+    navbarHamburger.addEventListener('click', function() {
+        navbarLinks.classList.toggle('open');
+        navbarHamburger.classList.toggle('active');
+    });
+    // Close menu when clicking a link (on mobile)
+    navbarLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 700) {
+                navbarLinks.classList.remove('open');
+                navbarHamburger.classList.remove('active');
+            }
+        });
+    });
+    // Optional: close menu on outside click
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth > 700) return;
+        if (!navbarLinks.contains(e.target) && !navbarHamburger.contains(e.target)) {
+            navbarLinks.classList.remove('open');
+            navbarHamburger.classList.remove('active');
+        }
     });
     </script>
 </body>
