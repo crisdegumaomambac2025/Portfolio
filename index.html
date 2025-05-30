@@ -598,6 +598,109 @@
                 font-size: 0.9em;
             }
         }
+        .site-footer {
+            background: linear-gradient(90deg, #181818 0%, #232323 100%);
+            color: var(--text-muted);
+            padding: 38px 0 18px 0;
+            margin-top: 48px;
+            font-size: 1.08em;
+            box-shadow: 0 -2px 18px #bfa10022;
+            border-top: 2px solid var(--gold-dark);
+            position: relative;
+            z-index: 2;
+        }
+        .footer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+            padding: 0 30px;
+        }
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .footer-logo {
+            font-size: 1.18em;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-logo i {
+            color: var(--gold-dark);
+            font-size: 1.2em;
+        }
+        .footer-role {
+            font-size: 0.98em;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .footer-social {
+            display: flex;
+            gap: 18px;
+            font-size: 1.35em;
+        }
+        .footer-social a {
+            color: var(--gold);
+            transition: color 0.18s, transform 0.18s;
+            text-decoration: none;
+        }
+        .footer-social a:hover {
+            color: #fff;
+            transform: scale(1.18) translateY(-2px);
+            text-shadow: 0 0 8px var(--gold);
+        }
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 18px;
+            font-size: 0.98em;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 700px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 0 8px;
+            }
+            .footer-brand {
+                align-items: center;
+            }
+            .footer-copy {
+                margin-top: 10px;
+            }
+        }
+        .darkmode .site-footer {
+            background: linear-gradient(90deg, #fff 0%, #f5f5f5 100%);
+            color: #232323;
+            border-top: 2px solid var(--gold);
+        }
+        .darkmode .footer-logo {
+            color: var(--gold-dark);
+        }
+        .darkmode .footer-logo i {
+            color: var(--gold);
+        }
+        .darkmode .footer-social a {
+            color: var(--gold-dark);
+        }
+        .darkmode .footer-social a:hover {
+            color: #232323;
+            text-shadow: 0 0 8px var(--gold-dark);
+        }
+        .darkmode .footer-copy {
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -605,18 +708,18 @@
         <div class="navbar-container">
             <div class="navbar-logo">PORTFOLIO</div>
             <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars" id="navbar-bars-icon"></i>
             </button>
             <ul class="navbar-links" id="navbar-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#about-me">About Me</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="navbar-link">Home</a></li>
+                <li><a href="#about-me" class="navbar-link">About Me</a></li>
+                <li><a href="#contact" class="navbar-link">Contact</a></li>
             </ul>
         </div>
     </nav>
     <canvas id="bg-cells"></canvas>
     <header>
-        <img src="me.jpg" alt="Profile Picture" class="profile-pic">
+        <img src="profile/me.jpg" alt="Profile Picture" class="profile-pic">
         <h1>CRIS D. OMAMBAC</h1>
         <h2>IT Student</h2>
         <p style="text-align:justify;">
@@ -733,6 +836,130 @@
     <button id="scrollToTopBtn" title="Go to top" style="display:none;position:fixed;bottom:32px;right:32px;z-index:999;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#181818;border:none;border-radius:50%;width:54px;height:54px;box-shadow:0 4px 18px #bfa10055,0 2px 8px #bfa10022;font-size:2em;cursor:pointer;transition:background 0.2s,transform 0.18s;outline:none;align-items:center;justify-content:center;">
         <i class="fas fa-chevron-up"></i>
     </button>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo"><i class="fas fa-gem"></i> CRIS D. OMAMBAC</span>
+                <span class="footer-role">IT Student & Web Developer</span>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/crisdegumaomambac/" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/crisdegumaomambac/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://discord.com/users/cris6069" target="_blank" rel="noopener" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="mailto:cris.omambac@gws.ctu.edu.ph" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="footer-copy">&copy; <span id="footer-year"></span> Cris D. Omambac. All rights reserved.</div>
+        </div>
+    </footer>
+    <style>
+    .site-footer {
+        background: linear-gradient(90deg, #181818 0%, #232323 100%);
+        color: var(--text-muted);
+        padding: 38px 0 18px 0;
+        margin-top: 48px;
+        font-size: 1.08em;
+        box-shadow: 0 -2px 18px #bfa10022;
+        border-top: 2px solid var(--gold-dark);
+        position: relative;
+        z-index: 2;
+    }
+    .footer-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 18px;
+        padding: 0 30px;
+    }
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .footer-logo {
+        font-size: 1.18em;
+        font-weight: 700;
+        color: var(--gold);
+        letter-spacing: 1.5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .footer-logo i {
+        color: var(--gold-dark);
+        font-size: 1.2em;
+    }
+    .footer-role {
+        font-size: 0.98em;
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+    .footer-social {
+        display: flex;
+        gap: 18px;
+        font-size: 1.35em;
+    }
+    .footer-social a {
+        color: var(--gold);
+        transition: color 0.18s, transform 0.18s;
+        text-decoration: none;
+    }
+    .footer-social a:hover {
+        color: #fff;
+        transform: scale(1.18) translateY(-2px);
+        text-shadow: 0 0 8px var(--gold);
+    }
+    .footer-copy {
+        width: 100%;
+        text-align: center;
+        margin-top: 18px;
+        font-size: 0.98em;
+        color: var(--text-muted);
+        letter-spacing: 0.5px;
+    }
+    @media (max-width: 700px) {
+        .footer-container {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 0 8px;
+        }
+        .footer-brand {
+            align-items: center;
+        }
+        .footer-copy {
+            margin-top: 10px;
+        }
+    }
+    .darkmode .site-footer {
+        background: linear-gradient(90deg, #fff 0%, #f5f5f5 100%);
+        color: #232323;
+        border-top: 2px solid var(--gold);
+    }
+    .darkmode .footer-logo {
+        color: var(--gold-dark);
+    }
+    .darkmode .footer-logo i {
+        color: var(--gold);
+    }
+    .darkmode .footer-social a {
+        color: var(--gold-dark);
+    }
+    .darkmode .footer-social a:hover {
+        color: #232323;
+        text-shadow: 0 0 8px var(--gold-dark);
+    }
+    .darkmode .footer-copy {
+        color: #555;
+    }
+    </style>
+    <script>
+    // Set current year in footer
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
     <script>
     // Moving background cells animation
     const canvas = document.getElementById('bg-cells');
@@ -870,15 +1097,36 @@
     // Dark mode toggle logic
     const darkmodeBtn = document.getElementById('darkmode-toggle');
     const darkmodeLabel = document.getElementById('darkmode-label');
+    const navbarBarsIcon = document.getElementById('navbar-bars-icon');
+    const navbarLinks = document.getElementById('navbar-links');
+    const navbarLinkEls = document.querySelectorAll('.navbar-link');
+
+    function setNavbarColors(isDark) {
+        // Hamburger icon color
+        if (navbarBarsIcon) {
+            navbarBarsIcon.style.color = isDark ? '#bfa100' : '#FFD700';
+        }
+        // Navbar link color
+        navbarLinkEls.forEach(function(link) {
+            link.style.color = isDark ? '#232323' : '#f5f5f5';
+        });
+        // For mobile menu background
+        if (navbarLinks) {
+            navbarLinks.style.background = isDark ? 'rgba(245,245,245,0.95)' : 'rgba(35,35,35,0.95)';
+        }
+    }
+
     function setDarkMode(on) {
         if (on) {
             document.body.classList.add('darkmode');
             darkmodeLabel.textContent = 'Light Mode';
             darkmodeBtn.querySelector('i').className = 'fas fa-sun';
+            setNavbarColors(true);
         } else {
             document.body.classList.remove('darkmode');
             darkmodeLabel.textContent = 'Dark Mode';
             darkmodeBtn.querySelector('i').className = 'fas fa-moon';
+            setNavbarColors(false);
         }
         localStorage.setItem('darkmode', on ? '1' : '0');
     }
@@ -915,7 +1163,6 @@
 
     // Hamburger menu toggle logic
     const navbarToggle = document.getElementById('navbar-toggle');
-    const navbarLinks = document.getElementById('navbar-links');
     navbarToggle.addEventListener('click', function() {
         navbarLinks.classList.toggle('show');
     });
