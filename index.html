@@ -171,6 +171,21 @@
             color: #fff;
             text-shadow: 0 0 8px var(--gold);
         }
+        /* Ensure navbar is above all other elements, including #bg-cells and modals */
+        .navbar, .navbar-container {
+            position: relative;
+            z-index: 10001;
+        }
+        /* If any modal or button has higher z-index, adjust accordingly */
+        #rightclick-modal, #scrollToTopBtn {
+            z-index: 10000;
+        }
+        #bg-cells {
+            z-index: 0 !important;
+        }
+        body > *:not(#bg-cells):not(.navbar):not(.navbar-container) {
+            z-index: 1;
+        }
         #bg-cells {
             position: fixed;
             top: 0; left: 0;
@@ -182,7 +197,6 @@
         }
         body > *:not(#bg-cells) {
             position: relative;
-            z-index: 1;
         }
         /* Ensure all images are responsive */
         img, .profile-pic {
@@ -385,7 +399,7 @@
             position: sticky;
             top: 0;
             left: 0;
-            z-index: 20;
+            z-index: 9999;
             padding: 0;
         }
         .navbar-container {
@@ -400,6 +414,7 @@
             border-radius: 0 0 18px 18px;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            z-index: 9999;
         }
         .navbar-logo {
             font-size: 1.35em;
@@ -455,6 +470,47 @@
         .darkmode .navbar-links a:hover,
         .darkmode .navbar-links a:focus {
             color: var(--gold-dark);
+        }
+        /* Hamburger menu styles */
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: var(--gold);
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: 0;
+            z-index: 30;
+        }
+        @media (max-width: 900px) {
+            .navbar-toggle {
+                display: block;
+            }
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(35,35,35,0.95);
+                position: absolute;
+                top: 58px;
+                left: 0;
+                border-radius: 0 0 18px 18px;
+                box-shadow: 0 2px 12px #bfa10022;
+                padding: 12px 0;
+            }
+            .navbar-links.show {
+                display: flex;
+            }
+            .navbar-container {
+                position: relative;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar-links {
+                top: 48px;
+                padding: 8px 0;
+            }
         }
         #scrollToTopBtn {
             display: none;
@@ -537,7 +593,10 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-logo">PORTFOLIO</div>
-            <ul class="navbar-links">
+            <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-links" id="navbar-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="#about-me">About Me</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -839,6 +898,21 @@
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Hamburger menu toggle logic
+    const navbarToggle = document.getElementById('navbar-toggle');
+    const navbarLinks = document.getElementById('navbar-links');
+    navbarToggle.addEventListener('click', function() {
+        navbarLinks.classList.toggle('show');
+    });
+    // Optional: Hide menu when a link is clicked (for better UX)
+    document.querySelectorAll('.navbar-links a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 900) {
+                navbarLinks.classList.remove('show');
             }
         });
     });
