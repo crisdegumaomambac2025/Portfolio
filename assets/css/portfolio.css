@@ -734,3 +734,9 @@ html {
         background: rgba(24,24,24,0.7);
     }
 }
+/* Add a blur effect for the darkmode toggle button when menu is open */
+.blurred-toggle {
+    filter: blur(6px) brightness(0.95);
+    transition: filter 0.2s;
+    pointer-events: none;
+}
