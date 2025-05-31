@@ -109,6 +109,8 @@ document.addEventListener('keydown', function(e) {
 
 // Dark mode toggle logic
 const darkmodeBtn = document.getElementById('darkmode-toggle');
+const darkmodeLabel = document.getElementById('darkmode-label');
+const darkmodeIcon = darkmodeBtn ? darkmodeBtn.querySelector('i') : null;
 const navbarBarsIcon = document.getElementById('navbar-bars-icon');
 const navbarLinks = document.getElementById('navbar-links');
 const navbarLinkEls = document.querySelectorAll('.navbar-link');
@@ -127,13 +129,29 @@ function setDarkMode(on) {
     if (on) {
         document.body.classList.add('darkmode');
         setNavbarColors(true);
+        if (darkmodeIcon) {
+            darkmodeIcon.classList.remove('fa-sun');
+            darkmodeIcon.classList.add('fa-moon');
+        }
+        if (darkmodeLabel) darkmodeLabel.textContent = 'Dark Mode';
     } else {
         document.body.classList.remove('darkmode');
         setNavbarColors(false);
+        if (darkmodeIcon) {
+            darkmodeIcon.classList.remove('fa-moon');
+            darkmodeIcon.classList.add('fa-sun');
+        }
+        if (darkmodeLabel) darkmodeLabel.textContent = 'Light Mode';
     }
     localStorage.setItem('darkmode', on ? '1' : '0');
 }
-setDarkMode(localStorage.getItem('darkmode') === '1');
+(function() {
+    let isDark = localStorage.getItem('darkmode') === '1';
+    if (localStorage.getItem('darkmode') === null) {
+        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    setDarkMode(isDark);
+})();
 if (darkmodeBtn) {
     darkmodeBtn.onclick = function() {
         setDarkMode(!document.body.classList.contains('darkmode'));
