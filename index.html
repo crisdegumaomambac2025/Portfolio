@@ -113,6 +113,7 @@
                 <div class="project">
                     <div class="project-title">Mobile Application</div>
                     <div class="project-desc">A cross-platform mobile app designed to enhance productivity and user engagement, featuring intuitive UI and seamless integration with web services.</div>
+                    <a href="#" class="view-more-link" style="display:inline-block;margin-top:10px;color:var(--gold);font-weight:600;text-decoration:underline;">View more details</a>
                 </div>
                 <div class="project">
                     <div class="project-title">Other Systems</div>
@@ -211,5 +212,24 @@ fetch('track_visitor.php')
     }
   });
 </script>
+<!-- Floating image popup for Mobile Application details -->
+<div id="mobileapp-popup" style="display:none;position:fixed;z-index:10001;top:0;left:0;width:100vw;height:100vh;background:rgba(24,24,24,0.65);justify-content:center;align-items:center;">
+    <div style="background:var(--bg-card);border-radius:14px;box-shadow:0 4px 24px #bfa10055;padding:18px 12px;max-width:95vw;width:340px;text-align:center;border:2px solid var(--gold);color:var(--text-main);position:relative;">
+        <button id="close-mobileapp-popup" style="position:absolute;top:8px;right:10px;background:none;border:none;font-size:1.3em;color:var(--gold);cursor:pointer;"><i class="fas fa-times"></i></button>
+        <div style="position:relative;display:flex;align-items:center;justify-content:center;min-height:220px;">
+            <button id="prev-mobileapp-img" style="background:none;border:none;position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:2em;color:var(--gold);cursor:pointer;padding:8px 10px;z-index:2;opacity:0.85;transition:opacity 0.2s;">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div style="display:flex;flex-direction:column;align-items:center;width:90%;max-width:220px;">
+                <img id="mobileapp-popup-img" src="images/mobileapp1.png" alt="MathMaster Screenshot" style="width:100%;border-radius:8px;box-shadow:0 2px 8px #bfa10022;margin-bottom:8px;transition:opacity 0.2s;z-index:1;"/>
+                <div id="mobileapp-popup-desc" style="color:var(--text-muted);font-size:0.98em;margin-top:2px;text-align:center;"></div>
+            </div>
+            <button id="next-mobileapp-img" style="background:none;border:none;position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:2em;color:var(--gold);cursor:pointer;padding:8px 10px;z-index:2;opacity:0.85;transition:opacity 0.2s;">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div style="margin-top:8px;color:var(--text-muted);font-size:0.98em; font-style: italic;">Click outside the image or the close icon to exit.</div>
+    </div>
+</div>
 </body>
 </html>
