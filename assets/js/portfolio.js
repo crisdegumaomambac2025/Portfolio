@@ -333,3 +333,62 @@ function fadeInOnScroll() {
 }
 window.addEventListener('scroll', fadeInOnScroll);
 window.addEventListener('DOMContentLoaded', fadeInOnScroll);
+
+// Modal for Mobile Application details
+window.addEventListener('DOMContentLoaded', function() {
+    const mobileAppPopup = document.getElementById('mobileapp-popup');
+    const viewMoreLink = document.querySelector('.view-more-link');
+    const closeMobileAppPopup = document.getElementById('close-mobileapp-popup');
+    const popupImg = document.getElementById('mobileapp-popup-img');
+    const popupDesc = document.getElementById('mobileapp-popup-desc');
+    const nextBtn = document.getElementById('next-mobileapp-img');
+    const prevBtn = document.getElementById('prev-mobileapp-img');
+    const images = [
+        'images/mobileapp1.png',
+        'images/mobileapp2.png'
+    ];
+    const descriptions = [
+        'MathMaster: Your Ultimate Math Learning Companion. Review lessons, explore core features, and get ready to level up your math skills!',
+        'MathMaster: Take quizzes, practice mental math, and level up as you master new topics. Fun, interactive, and perfect for all ages!'
+    ];
+    let currentImg = 0;
+    function showImg(idx) {
+        if (!popupImg || !popupDesc) return;
+        currentImg = (idx + images.length) % images.length;
+        popupImg.style.opacity = 0.5;
+        setTimeout(() => {
+            popupImg.src = images[currentImg];
+            popupDesc.textContent = descriptions[currentImg];
+            popupImg.style.opacity = 1;
+        }, 120);
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showImg(currentImg + 1);
+        });
+    }
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showImg(currentImg - 1);
+        });
+    }
+    if (viewMoreLink && mobileAppPopup) {
+        viewMoreLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showImg(0);
+            mobileAppPopup.style.display = 'flex';
+        });
+    }
+    if (closeMobileAppPopup && mobileAppPopup) {
+        closeMobileAppPopup.addEventListener('click', function() {
+            mobileAppPopup.style.display = 'none';
+        });
+    }
+    if (mobileAppPopup) {
+        mobileAppPopup.addEventListener('click', function(e) {
+            if (e.target === mobileAppPopup) mobileAppPopup.style.display = 'none';
+        });
+    }
+});
